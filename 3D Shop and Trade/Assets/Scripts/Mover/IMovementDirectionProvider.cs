@@ -1,9 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Mover
+public interface IMovementDirectionProvider
 {
-    public interface IMovementDirectionProvider
-    {
-        public Vector3 GetMovementDirection();
-    }
+    public Vector3 GetMovementDirection();
 }

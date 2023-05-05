@@ -1,7 +1,6 @@
-﻿using Mover;
-using UnityEngine;
+﻿using UnityEngine;
 
-public abstract class MovementInput : MonoBehaviour, IMovementDirectionProvider
+public abstract class MovementInput: MonoBehaviour, IMovementDirectionProvider
 {
     [SerializeField] private EntityMovement _entityMovement;
 

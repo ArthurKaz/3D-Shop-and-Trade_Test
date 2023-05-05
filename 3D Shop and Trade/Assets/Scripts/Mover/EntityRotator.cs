@@ -1,17 +1,14 @@
 ﻿using UnityEngine;
 
-namespace Mover
+public class EntityRotator : MonoBehaviour
 {
-    public class EntityRotator : MonoBehaviour
+    public void Rotate(Quaternion eulers)
     {
-        public void Rotate(Quaternion eulers)
-        {
-            transform.localRotation = eulers;
-        }
+        transform.localRotation = eulers;
+    }
 
-        public void Rotate(Vector3 eulers)
-        {
-            transform.Rotate(eulers);
-        }
+    public void Rotate(Vector3 eulers)
+    {
+        transform.Rotate(eulers);
     }
 }
