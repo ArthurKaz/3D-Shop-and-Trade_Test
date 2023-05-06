@@ -17,6 +17,8 @@ public class PositionBaseUI : BaseUI
 
     public override void HideUI()
     {
-        
+        _tween.Kill();
+        _rectTransform.anchoredPosition = _viewPosition;
+        _tween =  _rectTransform.DOAnchorPos(_startPosition, _viewDuration).OnComplete(Disable);
     }
 }

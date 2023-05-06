@@ -1,4 +1,4 @@
-﻿public class MarketTriggerObserver : TriggerObserver<Player>
+﻿public class MarketTriggerObserver : TriggerObserver<Customer>
 {
 
 }

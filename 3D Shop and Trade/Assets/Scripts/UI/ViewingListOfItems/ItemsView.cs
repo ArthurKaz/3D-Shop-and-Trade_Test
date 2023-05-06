@@ -1,19 +1,20 @@
 ﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ItemsView : ScaleBaseUI
 {
+    [SerializeField] private TextMeshProUGUI _textMeshProUGUI;
     [SerializeField] private ItemsRow _itemRowsPrefab;
     [SerializeField] private Transform _container;
 
-    private List<ItemsRow> _rows = new List<ItemsRow>();
+    private readonly List<ItemsRow> _rows = new();
     private int _currentRow = 0;
     private Container<Item> _itemContainer;
     
-    
-    private ItemButtonView _buttonView;
+    private ExchangeView _buttonView;
 
-    public void Construct(ItemButtonView buttonView)
+    public void Construct(ExchangeView buttonView)
     {
         _buttonView = buttonView;
     }
@@ -31,6 +32,7 @@ public class ItemsView : ScaleBaseUI
 
     public void UpdateItems()
     {
+        _textMeshProUGUI.gameObject.SetActive(false);
         Clear();
         foreach (var item in _itemContainer.AllObjects())
         {
@@ -74,5 +76,10 @@ public class ItemsView : ScaleBaseUI
         _buttonView.Hide();
     }
 
-    
+
+    public void ShowMessage(string message)
+    {
+       _textMeshProUGUI.gameObject.SetActive(true);
+       _textMeshProUGUI.text = message;
+    }
 }

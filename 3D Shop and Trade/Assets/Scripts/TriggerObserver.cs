@@ -8,15 +8,14 @@ public class TriggerObserver<T> : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out T obj))
+        if (other.TryGetComponent(out T _))
         {
-            Debug.Log("trigger");
             OnTriggerEnterEvent?.Invoke();
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.TryGetComponent(out T obj))
+        if (other.TryGetComponent(out T _))
         {
             OnTriggerExitEvent?.Invoke();
         }

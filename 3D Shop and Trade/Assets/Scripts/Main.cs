@@ -1,27 +1,53 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Main : MonoBehaviour
 {
-    [SerializeField] private ItemsView _buyingView;
+    private const int StartMoney = 1000;
     [SerializeField] private MoneyPanel _moneyPanel;
-    [SerializeField] private Player _player;
     
+    [SerializeField] private Customer _customer;
     [SerializeField] private MarketModel _marketModel;
 
-    [SerializeField] private ItemButtonView _buyingButton;
 
     [SerializeField] private Market _sellingMarket;
-
     [SerializeField] private Market _buyingMarket;
 
+    [SerializeField] private PurchaseHandler _purchaseHandler;
+    [SerializeField] private DisappearingMessage _message;
+
+    [SerializeField] private MarketTriggerObserver _observer1, _observer2;
 
     private void Start()
     {
+        
         _sellingMarket.Construct(_marketModel);
-        _buyingMarket.Construct(_player);
+        _buyingMarket.Construct(_customer);
 
-        _player.CounterUpdated += _moneyPanel.UpdateMoney;
-        _buyingView.Construct(_buyingButton);
-        _buyingView.Init(_player);
+        _customer.CounterUpdated += _moneyPanel.UpdateMoney;
+
+        _purchaseHandler.Failed += ShowFailedPurchaseMessage;
+        
+        _customer.Init(StartMoney);
+
+        _observer1.OnTriggerEnterEvent += UnlockCursor;
+        _observer2.OnTriggerEnterEvent += UnlockCursor;
+        _observer1.OnTriggerExitEvent += LockCursor;
+        _observer2.OnTriggerExitEvent += LockCursor;
+        LockCursor();
+    }
+
+    private void LockCursor()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    private void UnlockCursor()
+    {
+        Cursor.lockState = CursorLockMode.None;
+    }
+    private void ShowFailedPurchaseMessage()
+    {
+        _message.ShowMessage("You don't have enough money");
     }
 }
