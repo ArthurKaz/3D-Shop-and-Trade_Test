@@ -15,3 +15,5 @@ MonoBehaviour:
   _name: Banan
   _image: {fileID: 21300000, guid: ce6f14df1bb51bb4aba93349850d8098, type: 3}
   _price: 100
+  _description: Bananas are a perfect choice for those looking for a tasty and nutritious
+    snack.
