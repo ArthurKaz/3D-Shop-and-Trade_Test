@@ -3,5 +3,6 @@
 public interface Container<T>
 {
     public List<T> AllObjects();
-    
+
+    void Remove(T obj);
 }

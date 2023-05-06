@@ -1,10 +1,15 @@
 ﻿using UnityEngine;
 
-public interface Item
+[CreateAssetMenu(fileName = "Item", menuName = "Config/items", order = 0)]
+public class Item : ScriptableObject
 {
-    public string Name { get; }
+    [SerializeField] private string _name;
+    [SerializeField] private Sprite _image;
+    [SerializeField] private int _price;
+    
+    public string Name => _name;
     public string Description { get; }
-    public int Price { get; }
-    public Sprite Icon { get; }
+    public int Price => _price;
+    public Sprite Icon => _image;
     public int Quantity { get; }
 }

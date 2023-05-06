@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 
-public class PurchaseHandler : MonoBehaviour
+public class PurchaseHandler : ExchangeHandler
 {
     [SerializeField] private Player _player;
+    
+    public override void Exchange(Item item) => Purchase(item);
 
-    public void Purchase(Item item)
+    private void Purchase(Item item)
     {
         var price = item.Price;
         if (_player.HasMoney(price))
@@ -13,4 +15,6 @@ public class PurchaseHandler : MonoBehaviour
             _player.AddItem(item);
         }
     }
+
+    
 }
