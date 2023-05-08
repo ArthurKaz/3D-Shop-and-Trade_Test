@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class RotateInput : MonoBehaviour
+public abstract class RotateInput : MonoBehaviour
 {
     [SerializeField] private float sensitivity = 100;
     [SerializeField] private EntityRotator entityRotator;

@@ -30,11 +30,17 @@ public class Main : MonoBehaviour
         
         _customer.Init(StartMoney);
 
-        _observer1.OnTriggerEnterEvent += UnlockCursor;
-        _observer2.OnTriggerEnterEvent += UnlockCursor;
-        _observer1.OnTriggerExitEvent += LockCursor;
-        _observer2.OnTriggerExitEvent += LockCursor;
-        LockCursor();
+        
+        if (Application.platform == RuntimePlatform.WindowsPlayer)
+        {
+            _observer1.OnTriggerEnterEvent += UnlockCursor;
+            _observer2.OnTriggerEnterEvent += UnlockCursor;
+            _observer1.OnTriggerExitEvent += LockCursor;
+            _observer2.OnTriggerExitEvent += LockCursor;
+            LockCursor();
+        }
+
+        
     }
 
     private void LockCursor()
@@ -46,6 +52,7 @@ public class Main : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
     }
+
     private void ShowFailedPurchaseMessage()
     {
         _message.ShowMessage("You don't have enough money");
