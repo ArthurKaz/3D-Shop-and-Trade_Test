@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6f04e10d76848f3b8a991217d9182de, type: 3}
   m_Name: PricePercents
   m_EditorClassIdentifier: 
-  _buyCommission: 4
+  _buyCommission: 2
   _sellCommission: 0
-  _sellBenefits: 20
+  _sellBenefits: 44
