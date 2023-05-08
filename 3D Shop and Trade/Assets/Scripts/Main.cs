@@ -31,7 +31,7 @@ public class Main : MonoBehaviour
         _customer.Init(StartMoney);
 
         
-        if (Application.platform == RuntimePlatform.WindowsPlayer)
+        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
         {
             _observer1.OnTriggerEnterEvent += UnlockCursor;
             _observer2.OnTriggerEnterEvent += UnlockCursor;
